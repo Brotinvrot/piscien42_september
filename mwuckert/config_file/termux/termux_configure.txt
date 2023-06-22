@@ -1,0 +1,4 @@
+### FIX PROBLEM WITH 'LOOP' in termix-clipboard-set
+
+	> chmod 400 $PREFIX/libexec/termux-am/am.apk 
+
