@@ -1,0 +1,2 @@
+[server] - irc.libera.chat 
+[channel] - #libera
