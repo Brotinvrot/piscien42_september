@@ -193,3 +193,14 @@
 
 					adm, bin, ...
 
+
+---------------
+HARD SCRIPTS FORMATTED_OUTPUT
+(СЛОЖНЫЕ СКРИПТЫ ФОРМАТИРОВАНИЕ ВЫВОДА)
+
+	### SEARCH FILE WITH .SH 
+	find . -type f  -name "*.sh" | rev |cut -d '/' -f 1 | rev | cut -d '.' -f 1
+
+
+
+
