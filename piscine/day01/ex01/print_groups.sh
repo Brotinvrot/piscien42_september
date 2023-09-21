@@ -1,1 +1,1 @@
-groups daemon  | tr " " "," 
+groups $FT_USER  | tr " " "," 
