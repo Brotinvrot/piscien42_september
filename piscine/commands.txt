@@ -37,15 +37,15 @@
 работа с гитом - ### GITHUB
 
 
-		git add file.md				# Добавить файл в буфер
-
-		git status				# Проверить текущий статус
+		git add file.md					# Добавить файл в буфер
+	
+		git status						# Проверить текущий статус
 
 		git commit -m 'comment'			# Сделать коммит и выгрузить файл из буфера папки
 
-		git push				# Выгрузить на гитхаб
+		git push						# Выгрузить на гитхаб
 
-		git rm (name file) 			# удаление файла из гита
+		git rm (name file) 				# удаление файла из гита
 		
 		git restore (name file)			# Восстановление удалённого файла  
 ------------------------
@@ -154,7 +154,8 @@
 			1)
 				@> export FT_USER="username"
 
-			2)	@> FT_USER="username"
+			2)
+				@> FT_USER="username"
 
 
 		- Получить значение переменной через $
@@ -199,7 +200,129 @@ HARD SCRIPTS FORMATTED_OUTPUT
 (СЛОЖНЫЕ СКРИПТЫ ФОРМАТИРОВАНИЕ ВЫВОДА)
 
 	### SEARCH FILE WITH .SH 
-	find . -type f  -name "*.sh" | rev |cut -d '/' -f 1 | rev | cut -d '.' -f 1
+	
+		- Задача скрипта находить файлы с расширением .sh и выводить только 
+		назвние данных файлов без расширения и без начального пути
+			
+			TASK - ЗАДАНИЕ 
+		 	--------------
+
+			FROM THIS	- dir/file_sh.sh 
+			
+			TO THIS		- file_sh
+			
+			# РЕШЕНИЕ 1
+
+				@> find . -type f  -name "*.sh" | rev |cut -d '/' -f 1 | rev | cut -d '.' -f 1
+			
+					file5
+					file7
+					file8
+					file 			# difference with 2 
+					file_sh
+
+				# Данный скрипт не обрабатывет единственную ситуацию, где файл
+				имеет название:
+				
+					IF FILENAME: file.6.sh 
+
+					THEN:		 file
+
+			# РЕШЕНИЕ 2 
+
+				@> find . -type f -name "*.sh" | sed 's/...$//' | rev | cut -d "/" -f 1 | rev
+
+					file5
+					file7
+					file8
+					file.6			# difference with 1 
+					file_sh
+
+
+				# Вышеприведенный скрипт выполняет свою задачу правильно и
+				отрезает расширение файла .sh, не затрагивая другой формат
+				записи с точкой
+
+----------------
+** FILES ACCESS PERMISSION - ПРАВА ДОСТУПА К ФАЙЛАМ 
+
+
+	### CHMOD
+
+		- Утилита chmod предназначенна для изменения прав доступа
+		к файлам 
+
+			@> ls -l 
+
+				-rwxrwxrwx # такой формат записи используется для файлов
+
+
+		- Чтобы изменить права доступа к файлу при помощи утилиты chmod
+		используем 
+
+			@> chmod ugo+rwx filename # + добавляет права
+	
+				-rwxrwxrwx 
+
+			@> chmod ugo-rwx filename # - забирает права
+
+				----------
+
+
+		- Также имеется возможность изменять права только
+		для пользователей, групп и остальных по-отдельности 
+	
+			# ЗАБРАТЬ ПРАВА
+				
+				СТАРТОВЫЕ ПРАВА: -rwxrwxrwx
+			
+					@> chmod u-rwx filename
+
+						----rwxrwx
+
+					@> chmod g-rwx filename
+
+						-rwx---rwx
+
+					@> chmod o-rwx filename 
+
+						-------rwx
+
+			# ДАТЬ ПРАВА
+				
+				СТАРТОВЫЕ ПРАВА: ----------
+
+					@> chmod u+rwx filename
+
+						-rwx------
+
+					@> chmod g+rwx filename
+
+						----rwx---
+
+					@> chmod o+rwx filename 
+
+
+						-------rwx
+
+		- Изменять можно как и отдельные права
+		так и для групп пользователей по-отдельности
+
+			СТАРТОВЫЕ ПРАВА: ----------
+
+			@> chmod uo+rw filename
+
+				-rw----rw-
+
+			
+
+				
+		
+
+
+
+
+
 
 
 
