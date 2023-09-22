@@ -243,6 +243,24 @@ HARD SCRIPTS FORMATTED_OUTPUT
 				отрезает расширение файла .sh, не затрагивая другой формат
 				записи с точкой
 
+		### COUNT DIR IN CURRENT PATH 
+
+			- Подсчитать кол-во дирректорий и файлов, в текущем каталоге
+			и подкаталогах, не учитивая текущий путь
+
+				@> find . -type d -o type f | sed '1d' | wc -l 
+
+
+					# sed '1d' - удалить первую строку
+
+		### PRINT MACHINE MAC
+
+			- Вывести MAC-адрес сетевых интерфейсов
+
+				@> ifconfig | grep  ether | sed 's/ether//' | tr -d ' ' | cut -c1-17
+					
+					50:b7:c3:2c:c1:3b
+
 ----------------
 ** FILES ACCESS PERMISSION - ПРАВА ДОСТУПА К ФАЙЛАМ 
 
