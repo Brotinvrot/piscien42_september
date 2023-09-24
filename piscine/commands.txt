@@ -257,7 +257,7 @@ HARD SCRIPTS FORMATTED_OUTPUT
 
 			- Вывести MAC-адрес сетевых интерфейсов
 
-				@> ifconfig | grep  ether | sed 's/ether//' | tr -d ' ' | cut -c1-17
+				@> ifconfig | grep  ether | sed 's/ether//' | tr -d ' \t' | cut -c1-17
 					
 					50:b7:c3:2c:c1:3b
 
