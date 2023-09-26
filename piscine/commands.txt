@@ -332,6 +332,98 @@ HARD SCRIPTS FORMATTED_OUTPUT
 
 				-rw----rw-
 
+------------------------------
+BEST MANUAL ABOUT COMMAND TOUCH AND 
+(LN|LN -S)
+
+	
+		### More info about structure of file
+			
+			-rw-r--r-- 1 mwuckert mwuckert 0 Jun  1 20:20 1
+			┗━━━━━━━━┛ ┃				   ┃
+			║		   ┃				   ┗━━━ Кол-во байт в файле (ВЕС ФАЙЛА)
+			┃		   ┃
+			┃		   ┃
+			┃		   ┗━━━ Данное поле указывает кол-во ссылок на файл,
+			┃		   		у файла-дирректорий их по умолчанию [2]
+			┃					
+			┃					━ drwxr-xr-x  2 mwuckert mwuckert 4096 Sep 26 20:07 2
+			┃
+			┃
+			┗━ Права доступа для  (USER|GROUP|OTHER) 
+
+		### TOUCH
+		
+			- Утилита для создании и модификации метаданных файлов, хардлинков
+			и символьных ссылок
+
+				
+			# Задать месяц, день и время создания файла 
+				
+				@> touch -t 06012020 (filename)
+				@> ls -l
+					
+					-rw-r--r-- 1 mwuckert mwuckert 0 Jun  1 20:20 1
+
+
+			# Для редактирования символьных ссылок используется флаг,
+			если не использовать [флаг -h] , изменяться будет тот файл, на 
+			который ссылается ссылка
+
+				[ИСХОДНЫЕ ФАЙЛЫ]
+
+					-rw-r--r--  1 mwuckert mwuckert    0 Jun  1 20:20 1
+					lrwxrwxrwx  1 mwuckert mwuckert    1 Sep 26 20:43 3 -> 1
+
+				@> touch -ht 06012020 (linkname) 
+				@> touch -ht 06012021 3 
+
+				[МОДИФИЦИРОВАННЫЕ ФАЙЛЫ]
+					
+					-rw-r--r--  1 mwuckert mwuckert    0 Jun  1 20:20 1
+					lrwxrwxrwx  1 mwuckert mwuckert    1 Jun  1 20:21 3 -> 1
+
+					# Как видно из примера файл с именем [1] не изменился, а
+					поменялся только файл с именем [3]
+
+		### LN and LN -S
+
+			- утилита для создания hardlink and symbollink 
+
+				
+			# LN -s 
+
+				@> ln -s (tofilename) (symlinkname)
+				@> ln -s 1 3 
+					
+					-rw-r--r--  1 mwuckert mwuckert    0 Jun  1 20:20 1
+								┃
+					lrwxrwxrwx  1 mwuckert mwuckert    1 Jun  1 20:21 3 -> 1
+								┃
+								┗ у символьной линки и у самого файла
+								  на который он ссылается кол-во ссылок 1 
+
+					
+					
+			# LN 
+
+				@> ln (tofilename) (hlinkname)
+				@> ln 1 3 
+
+					-rw-r--r--  2 mwuckert mwuckert    0 Sep 26 21:05 3
+								┃
+					-rw-r--r--  2 mwuckert mwuckert    0 Sep 26 21:05 4
+								┃
+								┗ у хард линки и у самого файла на который
+								  ссылается 2 ссылки 
+					
+					
+
+					
+							   
+						
+
+				
 			
 
 				
